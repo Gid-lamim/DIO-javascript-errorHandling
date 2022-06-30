@@ -10,6 +10,9 @@ function validaArray (arr, num){
 
     //se o número não for do tipo number, lance outro TypeError
     if (typeof num !== 'number') throw new TypeError("O segundo parâmetro precisa ser do tipo number");
+    
+    //se o tamanho do array for diferente do número enviado como parâmetro, lance um erro do tipo RangeError
+    if (arr.length !== num) throw new RangeError("Tamanho de Array inválido"); 
 }
 
-console.log(validaArray([2],"a"));
+console.log(validaArray([2],2));
