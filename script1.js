@@ -22,8 +22,38 @@ function validaArray (arr, num){
         return arr;
     } catch(e){
         //o bloco catch lida com os erros encontrados.
-        
+        // iremos filtrar os erros e tomar uma ação para cada tipo de erro encontrado, usando o isntanceof
+
+        console.log(`error found: ${e.message}`); 
+        if (e instanceof ReferenceError){
+            console.log("Este é um erro do tipo ReferenceError");
+        } else if (e instanceof TypeError){
+             console.log("Este é um erro do tipo TypeError");
+        } else if (e instanceof RangeError){
+             console.log("Este é um erro do tipo RangeError");
+        } else {
+            //se não for nenhum dos erros esperados, lançe a mensagem:
+            console.log("Erro inesperado:" + e);
+        }
+            
     }
+
 }
 
-console.log(validaArray([2],2));
+
+console.log("ReferenceError----------------------------------");
+//first test -- empty parameters
+console.log("validaArray()");
+console.log(validaArray());
+
+console.log("TypeError----------------------------------");
+console.log("validaArray(a,2)");
+console.log(validaArray("a",2));
+
+console.log("TypeError----------------------------------");
+console.log("validaArray([a],a)");
+console.log(validaArray(["a"],"a"));
+
+console.log("ReferenceError----------------------------------");
+console.log("validaArray([a],2)");
+console.log(validaArray(["a"],2));
